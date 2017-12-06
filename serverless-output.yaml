@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  CICDLambdaPreTestFunction:
+    Properties:
+      CodeUri: s3://cicdsample.appcohesion.io/8f2c9a8375b4a6d8368c73996e432dde
+      Environment:
+        Variables:
+          S3_BUCKET: cicdsample.appcohesion.io
+      FunctionName: CiCdLambdaUpdateProd
+      Handler: index.handler
+      Runtime: nodejs6.10
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

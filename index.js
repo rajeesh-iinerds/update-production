@@ -1,13 +1,12 @@
 /**
  * @author Rajeesh <rajeesh.k@iinerds.com>
- * @version: 0.3
+ * @version: 0.4
  */
-
 
 'use strict'
 
 const jsonQuery = require('json-query');
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
 
 /**
  * Define AWS API version
@@ -21,6 +20,7 @@ AWS.config.apiVersions = {
 var cloudformation = new AWS.CloudFormation();
 var codepipeline = new AWS.CodePipeline();
 var apigateway = new AWS.APIGateway();
+var lambda = new AWS.lambda();
 
 // Lambda handler start here.
 exports.handler = function(event, context, callback) {
@@ -89,6 +89,7 @@ exports.handler = function(event, context, callback) {
             }    
         });    
     }    
+
     // Notify AWS CodePipeline of a failed job
     var putJobFailure = function(message) {
         var params = {
